@@ -7,10 +7,13 @@ from datetime import datetime, timezone
 import httpx
 
 from backend.app.models.signal import Signal, SignalDomain
+from backend.ingestion.pipeline import SignalCollector
 
 
-class GDELTCollector:
+class GDELTCollector(SignalCollector):
     """Collect and normalize news signals from GDELT DOC 2.0."""
+
+    name = "gdelt"
 
     BASE_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 
